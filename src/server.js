@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import { errors } from 'celebrate';
 import 'dotenv/config';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(notesRoutes);
 
 app.use(notFoundHandler);
+app.use(errors());
 app.use(errorHandler);
 
 // connecting to MongoDB
